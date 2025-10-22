@@ -1,7 +1,9 @@
+import os
 import matplotlib.pyplot as plt
 import torch
 import typer
 import wandb
+import torchvision
 from mlops_p1.data import corrupt_mnist
 from mlops_p1.model import MyAwesomeModel
 from sklearn.metrics import RocCurveDisplay, accuracy_score, f1_score, precision_score, recall_score
@@ -20,7 +22,6 @@ def train(lr: float = 0.001, batch_size: int = 32, epochs: int = 5) -> None:
 
     model = MyAwesomeModel().to(DEVICE)
     train_set, _ = corrupt_mnist()
-
     train_dataloader = torch.utils.data.DataLoader(train_set, batch_size=batch_size)
 
     loss_fn = torch.nn.CrossEntropyLoss()
@@ -28,8 +29,8 @@ def train(lr: float = 0.001, batch_size: int = 32, epochs: int = 5) -> None:
 
     for epoch in range(epochs):
         model.train()
-
         preds, targets = [], []
+
         for i, (img, target) in enumerate(train_dataloader):
             img, target = img.to(DEVICE), target.to(DEVICE)
             optimizer.zero_grad()
@@ -37,6 +38,7 @@ def train(lr: float = 0.001, batch_size: int = 32, epochs: int = 5) -> None:
             loss = loss_fn(y_pred, target)
             loss.backward()
             optimizer.step()
+
             accuracy = (y_pred.argmax(dim=1) == target).float().mean().item()
             wandb.log({"train_loss": loss.item(), "train_accuracy": accuracy})
 
@@ -46,18 +48,17 @@ def train(lr: float = 0.001, batch_size: int = 32, epochs: int = 5) -> None:
             if i % 100 == 0:
                 print(f"Epoch {epoch}, iter {i}, loss: {loss.item()}")
 
-                # add a plot of the input images
-                images = wandb.Image(img[:5].detach().cpu(), caption="Input images")
-                wandb.log({"images": images})
+                #  FIXED: log image grid properly
+                grid = torchvision.utils.make_grid(img[:5].detach().cpu(), nrow=5, normalize=True)
+                wandb.log({"input_batch": wandb.Image(grid, caption=f"Epoch {epoch}, Iter {i}")})
 
-                # add a plot of histogram of the gradients
+                # histogram of gradients
                 grads = torch.cat([p.grad.flatten() for p in model.parameters() if p.grad is not None], 0)
                 wandb.log({"gradients": wandb.Histogram(grads)})
 
-        # add a custom matplotlib plot of the ROC curves
+        # ROC curve per class
         preds = torch.cat(preds, 0)
         targets = torch.cat(targets, 0)
-
         for class_id in range(10):
             one_hot = torch.zeros_like(targets)
             one_hot[targets == class_id] = 1
@@ -68,24 +69,33 @@ def train(lr: float = 0.001, batch_size: int = 32, epochs: int = 5) -> None:
                 plot_chance_level=(class_id == 2),
             )
 
-        # alternatively use wandb.log({"roc": wandb.Image(plt)}
-        wandb.plot({"roc": plt})
-        plt.close()  # close the plot to avoid memory leaks and overlapping figures
+        wandb.log({"roc": wandb.Image(plt)})
+        plt.close()  # avoid memory leaks
 
+    # final metrics
     final_accuracy = accuracy_score(targets, preds.argmax(dim=1))
     final_precision = precision_score(targets, preds.argmax(dim=1), average="weighted")
     final_recall = recall_score(targets, preds.argmax(dim=1), average="weighted")
     final_f1 = f1_score(targets, preds.argmax(dim=1), average="weighted")
 
-    # first we save the model to a file then log it as an artifact
-    torch.save(model.state_dict(), "model.pth")
+    # ensure model is saved properly
+    os.makedirs("models", exist_ok=True)
+    model_path = "models/model.pth"
+    torch.save(model.state_dict(), model_path)
+
+    # log model as W&B artifact
     artifact = wandb.Artifact(
         name="corrupt_mnist_model",
         type="model",
         description="A model trained to classify corrupt MNIST images",
-        metadata={"accuracy": final_accuracy, "precision": final_precision, "recall": final_recall, "f1": final_f1},
+        metadata={
+            "accuracy": final_accuracy,
+            "precision": final_precision,
+            "recall": final_recall,
+            "f1": final_f1,
+        },
     )
-    artifact.add_file("model.pth")
+    artifact.add_file(model_path)
     run.log_artifact(artifact)
 
 

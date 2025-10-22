@@ -1,0 +1,28 @@
+{
+  "os":  "macOS-10.16-x86_64-i386-64bit",
+  "python":  "CPython 3.12.11",
+  "startedAt":  "2025-10-22T15:21:43.746227Z",
+  "program":  "/Users/francescocentomo/Desktop/MLOPS/MLOPS_p1/src/mlops_p1/train2.py",
+  "codePath":  "src/mlops_p1/train2.py",
+  "codePathLocal":  "src/mlops_p1/train2.py",
+  "git":  {
+    "remote":  "https://github.com/fracent/MLOPS_p1.git",
+    "commit":  "450dc3b85b5e351776ff4f47c22f5a1976f4a156"
+  },
+  "email":  "francesco100mo@gmail.com",
+  "root":  "/Users/francescocentomo/Desktop/MLOPS/MLOPS_p1",
+  "host":  "MacBookPro.home",
+  "executable":  "/Users/francescocentomo/anaconda3/envs/MLOPS_p1/bin/python",
+  "cpu_count":  4,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "250685575168",
+      "used":  "212098433024"
+    }
+  },
+  "memory":  {
+    "total":  "8589934592"
+  },
+  "writerId":  "2t2ynbs01tp3xighi24ez0dsta2dnz1g"
+}
