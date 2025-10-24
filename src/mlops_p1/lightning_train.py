@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
 from pytorch_lightning import Trainer
-from pytorch_lightning.loggers import WandbLogger  # optional but nice
+from pytorch_lightning.loggers import WandbLogger 
 from mlops_p1.data import corrupt_mnist
 from mlops_p1.lightning_model import MyAwesomeModel
 
@@ -15,10 +15,10 @@ def main():
     # Instantiate model
     model = MyAwesomeModel()
 
-    #  Optional: connect to Weights & Biases logger
+    #  connect to Weights & Biases logger
     wandb_logger = WandbLogger(project="lightning-test")
 
-    # Instantiate Trainer — this is where all flags go
+    # Instantiate Trainer 
     trainer = Trainer(
         max_epochs=10,              
         limit_train_batches=0.2,    
@@ -27,10 +27,10 @@ def main():
         accelerator="auto",         
     )
 
-    # Train!
+    # Train
     trainer.fit(model, train_dataloader)
 
-    # (optional) test after training
+    # test after training
     trainer.test(model, test_dataloader)
 
 
