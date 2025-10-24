@@ -1,0 +1,23 @@
+2025-10-23 15:55:36,978 INFO    MainThread:16207 [wandb_setup.py:_flush():81] Current SDK version is 0.22.2
+2025-10-23 15:55:36,979 INFO    MainThread:16207 [wandb_setup.py:_flush():81] Configure stats pid to 16207
+2025-10-23 15:55:36,979 INFO    MainThread:16207 [wandb_setup.py:_flush():81] Loading settings from /Users/francescocentomo/.config/wandb/settings
+2025-10-23 15:55:36,979 INFO    MainThread:16207 [wandb_setup.py:_flush():81] Loading settings from /Users/francescocentomo/Desktop/MLOPS/MLOPS_p1/wandb/settings
+2025-10-23 15:55:36,979 INFO    MainThread:16207 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-10-23 15:55:36,979 INFO    MainThread:16207 [wandb_init.py:setup_run_log_directory():705] Logging user logs to ./wandb/run-20251023_155536-davry9ti/logs/debug.log
+2025-10-23 15:55:36,979 INFO    MainThread:16207 [wandb_init.py:setup_run_log_directory():706] Logging internal logs to ./wandb/run-20251023_155536-davry9ti/logs/debug-internal.log
+2025-10-23 15:55:36,979 INFO    MainThread:16207 [wandb_init.py:init():832] calling init triggers
+2025-10-23 15:55:36,980 INFO    MainThread:16207 [wandb_init.py:init():837] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2025-10-23 15:55:36,980 INFO    MainThread:16207 [wandb_init.py:init():880] starting backend
+2025-10-23 15:55:37,431 INFO    MainThread:16207 [wandb_init.py:init():883] sending inform_init request
+2025-10-23 15:55:37,509 INFO    MainThread:16207 [wandb_init.py:init():891] backend started and connected
+2025-10-23 15:55:37,513 INFO    MainThread:16207 [wandb_init.py:init():961] updated telemetry
+2025-10-23 15:55:37,565 INFO    MainThread:16207 [wandb_init.py:init():985] communicating run to backend with 90.0 second timeout
+2025-10-23 15:55:38,500 INFO    MainThread:16207 [wandb_init.py:init():1036] starting run threads in backend
+2025-10-23 15:55:38,837 INFO    MainThread:16207 [wandb_run.py:_console_start():2509] atexit reg
+2025-10-23 15:55:38,837 INFO    MainThread:16207 [wandb_run.py:_redirect():2357] redirect: wrap_raw
+2025-10-23 15:55:38,837 INFO    MainThread:16207 [wandb_run.py:_redirect():2426] Wrapping output streams.
+2025-10-23 15:55:38,837 INFO    MainThread:16207 [wandb_run.py:_redirect():2449] Redirects installed.
+2025-10-23 15:55:38,842 INFO    MainThread:16207 [wandb_init.py:init():1076] run started, returning control to user process
+2025-10-23 15:56:02,979 INFO    wandb-AsyncioManager-main:16207 [service_client.py:_forward_responses():80] Reached EOF.
+2025-10-23 15:56:02,979 INFO    wandb-AsyncioManager-main:16207 [mailbox.py:close():137] Closing mailbox, abandoning 1 handles.

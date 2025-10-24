@@ -1,0 +1,28 @@
+{
+  "os":  "macOS-10.16-x86_64-i386-64bit",
+  "python":  "CPython 3.12.11",
+  "startedAt":  "2025-10-23T13:55:36.969588Z",
+  "program":  "/Users/francescocentomo/Desktop/MLOPS/MLOPS_p1/src/mlops_p1/lightning_train.py",
+  "codePath":  "src/mlops_p1/lightning_train.py",
+  "codePathLocal":  "src/mlops_p1/lightning_train.py",
+  "git":  {
+    "remote":  "https://github.com/fracent/MLOPS_p1.git",
+    "commit":  "41081eb73cc2bed784746470af48fcf54f9370b4"
+  },
+  "email":  "francesco100mo@gmail.com",
+  "root":  ".",
+  "host":  "MacBookPro.home",
+  "executable":  "/Users/francescocentomo/anaconda3/envs/MLOPS_p1/bin/python",
+  "cpu_count":  4,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "250685575168",
+      "used":  "212020822016"
+    }
+  },
+  "memory":  {
+    "total":  "8589934592"
+  },
+  "writerId":  "3gzoq94o77fmbxd6672z98iybcgmlcv5"
+}

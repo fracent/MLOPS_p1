@@ -1,0 +1,58 @@
+_wandb:
+    value:
+        cli_version: 0.22.2
+        e:
+            3gzoq94o77fmbxd6672z98iybcgmlcv5:
+                codePath: src/mlops_p1/lightning_train.py
+                codePathLocal: src/mlops_p1/lightning_train.py
+                cpu_count: 4
+                cpu_count_logical: 8
+                disk:
+                    /:
+                        total: "250685575168"
+                        used: "212020822016"
+                email: francesco100mo@gmail.com
+                executable: /Users/francescocentomo/anaconda3/envs/MLOPS_p1/bin/python
+                git:
+                    commit: 41081eb73cc2bed784746470af48fcf54f9370b4
+                    remote: https://github.com/fracent/MLOPS_p1.git
+                host: MacBookPro.home
+                memory:
+                    total: "8589934592"
+                os: macOS-10.16-x86_64-i386-64bit
+                program: /Users/francescocentomo/Desktop/MLOPS/MLOPS_p1/src/mlops_p1/lightning_train.py
+                python: CPython 3.12.11
+                root: .
+                startedAt: "2025-10-23T13:55:36.969588Z"
+                writerId: 3gzoq94o77fmbxd6672z98iybcgmlcv5
+        m:
+            - "1": trainer/global_step
+              "6":
+                - 3
+              "7": []
+            - "2": '*'
+              "5": 1
+              "6":
+                - 1
+              "7": []
+        python_version: 3.12.11
+        t:
+            "1":
+                - 1
+                - 9
+                - 41
+                - 103
+                - 105
+            "2":
+                - 1
+                - 9
+                - 41
+                - 103
+                - 105
+            "3":
+                - 7
+                - 66
+            "4": 3.12.11
+            "5": 0.22.2
+            "12": 0.22.2
+            "13": darwin-x86_64
