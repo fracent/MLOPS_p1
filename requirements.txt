@@ -1,8 +1,7 @@
 invoke==2.2.1
 matplotlib==3.10.7
+pytorch_lightning==2.5.5
 scikit_learn==1.7.2
 torch==2.2.2
+torchvision==0.17.2
 typer==0.20.0
-numpy==1.26.4
-typer===0.20.0
-invoke===2.2.1

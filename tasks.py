@@ -115,6 +115,3 @@ def dvc(ctx, folder="data", message="Add new data"):
 def pull_data(ctx):
     ctx.run("dvc pull")
 
-@task(pull_data)
-def train(ctx)
-    ctx.run("my_cli train")
